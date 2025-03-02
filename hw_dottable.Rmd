@@ -1,0 +1,27 @@
+---
+title: "hw_dottable"
+author: "Jack Kuo Chang"
+date: "2025-03-02"
+output: pdf_document
+---
+
+```{r, message = false}
+setwd("~/hw_dottable")
+library(tidyverse)
+library(dplyr)
+library(data.table)
+nycdata <- fread("nycdata.csv") 
+#link: https://github.com/jkuoc183/hw_dottable
+#ssh: git@github.com:jkuoc183/hw_dottable.git
+```
+
+```{r}
+#1.	Use and show data.table code to select the variables year, month, day, and hour from the imported flights data
+glimpse(nycdata)
+class(nycdata)
+nycdata_col <- nycdata[ , .(year, month, day, hour)]
+head(nycdata_col)
+```
+
+
+
