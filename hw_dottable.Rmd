@@ -5,7 +5,7 @@ date: "2025-03-02"
 output: pdf_document
 ---
 
-```{r, message = false}
+```{r, message = FALSE}
 setwd("~/hw_dottable")
 library(tidyverse)
 library(dplyr)
@@ -46,23 +46,32 @@ head(ua_march_airtime_tidy)
 
 ```{r}
 #5. Use the data.table method to add a variable called speed that is the average air speed of the plane in miles per hour.
-
+nycdata[ , speed := round(distance/(air_time/60),2)]
+head(nycdata)
 ```
 
 
 ```{r}
 #6.	Use the tidyverse method to add a variable called speed that is the average air speed of the plane in miles per hour.
+nycdata<- nycdata |> 
+  mutate(speed = round(distance/ (air_time/60),2))
+head(nycdata)
 
 ```
 
 ```{r}
-#7.	Show and use coding to change the carrier abbreviation of UA to UniitedAir,
+#7.	Show and use coding to change the carrier abbreviation of UA to UnitedAir,
 #7a. data.table method
-
+nycdata[carrier == "UA", carrier := "UnitedAir"]
+unique(nycdata$carrier)
 
 ```
 
 ```{r}
 #7b. tidyverse method (Use a sequence of dplyr commands so that you can see the change in your table)
 
+nycdata <- nycdata |> 
+ mutate(carrier = ifelse(carrier == "UA", "UnitedAir",carrier))
+nycdata |> 
+  count(carrier)
 ```
