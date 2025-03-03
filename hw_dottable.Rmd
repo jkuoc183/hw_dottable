@@ -24,15 +24,15 @@ head(nycdata_col)
 ```{r}
 #2. Use and show data. table code to produce a table that shows a carrier of DL, an origin of JFK and a destination of SEA
 
-jfk_sea <- nycdata[carrier == "DL" & origin =="JFK" & dest =="SEA"]
-head(jfk_sea)
+dl_jfk_sea <- nycdata[carrier == "DL" & origin =="JFK" & dest =="SEA"]
+head(dl_jfk_sea)
 ```
 
 
 ```{r}
 #3.	Use and show data.table code to produce a table that shows a carrier of UA, a month of March, and an airtime that is below 330.
-
-
+ua_march_airtime <- nycdata[carrier == "UA" & month == 3 & air_time < 330]
+head(ua_march_airtime)
 ```
 
 
